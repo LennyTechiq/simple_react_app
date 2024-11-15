@@ -1,24 +1,33 @@
-import { useEffect, useState } from 'react'
-import { MainApp } from "./styled";
+import { useEffect, useState } from 'react';
+import Button from '@mui/material/Button';
 
 function App() {
-  const storageKeyName = "count"
+  const storageKeyName = 'count';
   
-  const retrieveCountValue = () => Number(localStorage.getItem(storageKeyName))
-  const [count, setCount] = useState(retrieveCountValue)
+  // Retrieve the count value from localStorage, defaulting to 0 if not present
+  const retrieveCountValue = () => Number(localStorage.getItem(storageKeyName)) || 0;
+  const [count, setCount] = useState(retrieveCountValue);
 
+  // Synchronize count with localStorage whenever it changes
   useEffect(() => {
     localStorage.setItem(storageKeyName, count);
-  }, [count])
+  }, [count]);
 
   return (
-    <MainApp>
-      Count Me
-      <button onClick={() => setCount((count) => count + 1)}>
-        count is {count}
-      </button>
-    </MainApp>
-  )
+    <div style={{ textAlign: 'center', marginTop: '50px' }}>
+      <h1>Welcome! 🎉</h1>
+      <p>This is my cool React App.</p>
+      <p style={{ color: 'tomato', fontWeight: 'bold', fontSize: '1.2rem' }}>Count Me</p>
+      <Button
+        variant="contained"
+        color="primary"
+        onClick={() => setCount((prevCount) => prevCount + 1)}
+        style={{ margin: '10px', padding: '10px 20px' }}
+      >
+        Count is <span aria-label="current count">{count}</span>
+      </Button>
+    </div>
+  );
 }
 
-export default App
+export default App;
