@@ -15,7 +15,7 @@ function App() {
 
   return (
     <div style={{ textAlign: 'center', marginTop: '50px' }}>
-      <h1>Welcome! 🎉</h1>
+      <h1>Welcome User! 🎉</h1>
       <p>This is my cool React App.</p>
       <p style={{ color: 'tomato', fontWeight: 'bold', fontSize: '1.2rem' }}>Count Me</p>
       <Button
@@ -24,7 +24,7 @@ function App() {
         onClick={() => setCount((prevCount) => prevCount + 1)}
         style={{ margin: '10px', padding: '10px 20px' }}
       >
-        Count is <span aria-label="current count">{count}</span>
+        {`Count is ${count}`}
       </Button>
     </div>
   );
